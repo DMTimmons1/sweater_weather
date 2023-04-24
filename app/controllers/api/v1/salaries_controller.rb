@@ -4,7 +4,7 @@ class Api::V1::SalariesController < ApplicationController
       render json: SalarySerializer.new(Salary.all)
     else
       @location = DestinationService.get_location(params[:location])
-      require 'pry'; binding.pry
+      @weather = WeatherService.get_weather(@location[:lat], @location[:lng])
     end
   end
 end
