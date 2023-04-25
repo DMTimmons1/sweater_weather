@@ -10,43 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_162907) do
+ActiveRecord::Schema[7.0].define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "destination_salaries", force: :cascade do |t|
-    t.bigint "destination_id"
-    t.bigint "salary_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["destination_id"], name: "index_destination_salaries_on_destination_id"
-    t.index ["salary_id"], name: "index_destination_salaries_on_salary_id"
-  end
-
-  create_table "destinations", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "forecasts", force: :cascade do |t|
-    t.bigint "destination_id"
-    t.string "summary"
-    t.string "temperature"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["destination_id"], name: "index_forecasts_on_destination_id"
-  end
-
-  create_table "salaries", force: :cascade do |t|
-    t.string "title"
-    t.string "min"
-    t.string "max"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "destination_salaries", "destinations"
-  add_foreign_key "destination_salaries", "salaries"
-  add_foreign_key "forecasts", "destinations"
 end
