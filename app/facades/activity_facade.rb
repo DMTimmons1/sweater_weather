@@ -39,12 +39,13 @@ class ActivityFacade
     }
   end
 
-  def self.activity_info
-    results = {
+  def activity_info
+    activity_hash = {
       id: "null",
       destination: @destination,
       forecast: self.get_forecast,
       activities: self.get_activities
     }
+    Activity.new(activity_hash)
   end
 end
