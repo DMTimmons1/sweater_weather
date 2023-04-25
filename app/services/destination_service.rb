@@ -1,9 +1,9 @@
 class DestinationService
   
-  def self.get_location(city)
-    response = conn.get("?location=#{city}")
+  def self.get_location(location)
+    response = conn.get("?location=#{location}")
     data = JSON.parse(response.body, symbolize_names: true)
-    @lat_long = data[:results].first[:locations].first[:latLng]
+    lat_long = data[:results].first[:locations].first[:latLng]
   end
   
 private 
